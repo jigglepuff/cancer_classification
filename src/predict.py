@@ -175,11 +175,11 @@ if __name__ == '__main__':
 	# logger.info("Percentage of tumor cases in training set is {}".format(sum(y_train)/len(y_train)))
 	# logger.info("Percentage of tumor cases in test set is {}".format(sum(y_test)/len(y_test)))
 	
-	# n = 50
-	# feaures_columns = lassoSelection(X_train, y_train, n)
-	feaures_columns = [25, 92, 119, 163, 166, 168, 181, 187, 194, 216, 240, 241, 248, \
-	253, 271, 272, 273, 282, 285, 287, 295, 305, 306, 336, 337, 339, 341, 351, 352, 488, \
-	495, 503, 511, 544, 588, 593, 641, 764, 1063, 1090, 1100, 1126, 1395, 1461, 1509, 1523, 1834, 1848, 1872]
+	n = 50
+	feaures_columns = lassoSelection(X_train, y_train, n)
+	# feaures_columns = [25, 92, 119, 163, 166, 168, 181, 187, 194, 216, 240, 241, 248, \
+	# 253, 271, 272, 273, 282, 285, 287, 295, 305, 306, 336, 337, 339, 341, 351, 352, 488, \
+	# 495, 503, 511, 544, 588, 593, 641, 764, 1063, 1090, 1100, 1126, 1395, 1461, 1509, 1523, 1834, 1848, 1872]
 	# print(features_columns)
 
 	scores = model_fit_predict(X_train[:,feaures_columns],X_test[:,feaures_columns],y_train,y_test)
