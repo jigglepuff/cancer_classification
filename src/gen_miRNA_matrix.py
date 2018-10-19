@@ -66,7 +66,6 @@ def extractDis(files):
 	# 
 	# print (df[columns])
 	df['disease_type'] = df['cases.0.project.disease_type']
-	df.loc[df['cases.0.samples.0.sample_type'].str.contains("Normal"), 'disease_type'] = 0 # Normal
 	df.loc[df['cases.0.project.disease_type'].str.contains("Breast"), 'disease_type'] = 1 # TCGA-BRCA
 	df.loc[df['cases.0.project.disease_type'].str.contains("Uterine Corpus"), 'disease_type'] = 2 # TCGA-UCEC
 	df.loc[df['cases.0.project.disease_type'].str.contains("Head"), 'disease_type'] = 3 # TCGA-HNSC
@@ -102,6 +101,7 @@ def extractDis(files):
 	df.loc[df['cases.0.project.disease_type'].str.contains("Rhabdoid"), 'disease_type'] = 34 # TARGET-RT
 	df.loc[df['cases.0.project.disease_type'].str.contains("Cholangiocarcinoma"), 'disease_type'] = 35 # TCGA-CHOL
 	df.loc[df['cases.0.project.disease_type'].str.contains("Glioblastoma"), 'disease_type'] = 35 # TCGA-CHOL
+	df.loc[df['cases.0.samples.0.sample_type'].str.contains("Normal"), 'disease_type'] = 0 # Normal
 	# checking
 	normal_count = df.loc[df.disease_type == 0].shape[0]
 	BRCA_count = df.loc[df.disease_type == 1].shape[0]
