@@ -92,21 +92,23 @@ def extractDis(files):
 	df.loc[df['cases.0.project.disease_type'].str.contains("Testicular"), 'disease_type'] = 24 # TCGA-TGCT
 	df.loc[df['cases.0.project.disease_type'].str.contains("Wilms"), 'disease_type'] = 25 # TARGET-WT
 	df.loc[df['cases.0.project.disease_type'].str.contains("Thymoma"), 'disease_type'] = 26 # TCGA-THYM
-	df.loc[df['cases.0.project.disease_type'].str.contains("Mesothelioma"), 'disease_type'] = 28 # TCGA-MESO
-	df.loc[df['cases.0.project.disease_type'].str.contains("Adrenocortical"), 'disease_type'] = 29 # TCGA-ACC
-	df.loc[df['cases.0.project.disease_type'].str.contains("Uveal"), 'disease_type'] = 30 # TCGA-UVM
-	df.loc[df['cases.0.project.disease_type'].str.contains("Kidney Chromophobe"), 'disease_type'] = 31 # TCGA-KICH
-	df.loc[df['cases.0.project.disease_type'].str.contains("Uterine Carcinosarcoma"), 'disease_type'] = 32 # TCGA-UCS
-	df.loc[df['cases.0.project.disease_type'].str.contains("Lymphoid"), 'disease_type'] = 33 # TCGA-DLBC
-	df.loc[df['cases.0.project.disease_type'].str.contains("Rhabdoid"), 'disease_type'] = 34 # TARGET-RT
-	df.loc[df['cases.0.project.disease_type'].str.contains("Cholangiocarcinoma"), 'disease_type'] = 35 # TCGA-CHOL
-	df.loc[df['cases.0.project.disease_type'].str.contains("Glioblastoma"), 'disease_type'] = 35 # TCGA-CHOL
+	df.loc[df['cases.0.project.disease_type'].str.contains("Mesothelioma"), 'disease_type'] = 27 # TCGA-MESO
+	df.loc[df['cases.0.project.disease_type'].str.contains("Adrenocortical"), 'disease_type'] = 28 # TCGA-ACC
+	df.loc[df['cases.0.project.disease_type'].str.contains("Uveal"), 'disease_type'] = 29 # TCGA-UVM
+	df.loc[df['cases.0.project.disease_type'].str.contains("Kidney Chromophobe"), 'disease_type'] = 30 # TCGA-KICH
+	df.loc[df['cases.0.project.disease_type'].str.contains("Uterine Carcinosarcoma"), 'disease_type'] = 31 # TCGA-UCS
+	df.loc[df['cases.0.project.disease_type'].str.contains("Lymphoid"), 'disease_type'] = 32 # TCGA-DLBC
+	df.loc[df['cases.0.project.disease_type'].str.contains("Rhabdoid"), 'disease_type'] = 33 # TARGET-RT
+	df.loc[df['cases.0.project.disease_type'].str.contains("Cholangiocarcinoma"), 'disease_type'] = 34 # TCGA-CHOL
+	df.loc[df['cases.0.project.disease_type'].str.contains("Glioblastoma"), 'disease_type'] = 35 # TCGA-GBM
 	df.loc[df['cases.0.samples.0.sample_type'].str.contains("Normal"), 'disease_type'] = 0 # Normal
 	# checking
-	normal_count = df.loc[df.disease_type == 0].shape[0]
-	BRCA_count = df.loc[df.disease_type == 1].shape[0]
-	UCEC_count = df.loc[df.disease_type == 2].shape[0]
-	logger.info("{} Normal samples\n {} Breast cancer\n {} Uterine Corpus\n".format(normal_count,BRCA_count,UCEC_count))
+	count_arr = []
+	for label in range (0,36):
+		count = df.loc[df.disease_type == label].shape[0]
+		count_arr.append(count)
+	logger.info("\nNormal samples: {}\n Breast(TCGA-BRCA): {}\n Uterine Corpus(TCGA-UCEC): \
+		{}\n Total:{}".format(count_arr[0],count_arr[1],count_arr[2], sum(count_arr)))
 	columns = ['file_id','disease_type']
 	return df[columns]
 
