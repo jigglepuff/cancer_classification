@@ -2,13 +2,13 @@
 
 #### Create virutal environment (example below is for miniconda):
 
-conda create --name gdc_project python=3
-source activate gdc_project 
-conda install scikit-learn
-conda install pandas
-conda install matplotlib
-conda install requests
-conda install plotly
+conda create --name gdc_project python=3 <br>
+source activate gdc_project <br>
+conda install scikit-learn<br>
+conda install pandas<br>
+conda install matplotlib<br>
+conda install requests<br>
+conda install plotly<br>
 
 
 #### Download miRNA data:
