@@ -1,4 +1,16 @@
 # cancer_classification
+
+#### Create virutal environment (example below is for miniconda):
+
+conda create --name gdc_project python=3
+source activate gdc_project 
+conda install scikit-learn
+conda install pandas
+conda install matplotlib
+conda install requests
+conda install plotly
+
+
 #### Download miRNA data:
 mkdir live_miRNA
 cd live_miRNA
